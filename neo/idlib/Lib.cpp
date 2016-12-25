@@ -194,6 +194,7 @@ void idLib::FatalError( const char* fmt, ... )
 	va_end( argptr );
 	
 	common->FatalError( "%s", text );
+    while(1){} // not called but satisfies compiler NO_RETURN decoration
 }
 
 /*
