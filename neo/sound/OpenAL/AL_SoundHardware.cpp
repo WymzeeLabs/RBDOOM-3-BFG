@@ -199,8 +199,10 @@ void idSoundHardware_OpenAL::Init()
 	// ---------------------
 	// Initialize the Doom classic sound system.
 	// ---------------------
+#if USE_DOOMCLASSIC
 	I_InitSoundHardware( voices.Max(), 0 );
-	
+#endif
+    
 	// ---------------------
 	// Create VU Meter Effect
 	// ---------------------
@@ -281,8 +283,10 @@ void idSoundHardware_OpenAL::Shutdown()
 	// ---------------------
 	// Shutdown the Doom classic sound system.
 	// ---------------------
+#if USE_DOOMCLASSIC
 	I_ShutdownSoundHardware();
-	
+#endif
+    
 	alcMakeContextCurrent( NULL );
 	
 	alcDestroyContext( openalContext );

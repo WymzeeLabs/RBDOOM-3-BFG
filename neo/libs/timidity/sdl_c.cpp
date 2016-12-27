@@ -91,7 +91,10 @@ static int ctl_read(int *valp)
 	return RC_NO_RETURN_VALUE;
 }
 extern void SendDebugMsg(const char*);
+#if USE_DOOMCLASSIC
 extern bool debugOutput;
+#endif
+
 static int cmsg(int type, int verbosity_level, const char *fmt, ...)
 {
 #ifdef _DEBUG
@@ -103,7 +106,11 @@ static int cmsg(int type, int verbosity_level, const char *fmt, ...)
 
 	strcat( timidity_error, "\n" );
 
-	if ( debugOutput && verbosity_level <= VERB_VERBOSE ) {
+	if (
+#if USE_DOOMCLASSIC
+        debugOutput &&
+#endif
+        verbosity_level <= VERB_VERBOSE ) {
 		safeOutputDebug( timidity_error );
 	}
 #endif
