@@ -117,7 +117,8 @@ void idSoundVoice_OpenAL::Create( const idSoundSample* leadinSample_, const idSo
 		
 		//soundSystemLocal.hardware.pXAudio2->CreateSourceVoice( &pSourceVoice, ( const WAVEFORMATEX* )&leadinSample->format, XAUDIO2_VOICE_USEFILTER, 4.0f, &streamContext );
 		
-		CheckALErrors();
+        // Call to reset error stack - we can safely ignore any errors here
+		alGetError();
 		
 		alGenSources( 1, &openalSource );
 		if( CheckALErrors() != AL_NO_ERROR )

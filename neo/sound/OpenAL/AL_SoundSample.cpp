@@ -82,7 +82,7 @@ idSoundSample_OpenAL::idSoundSample_OpenAL()
 	
 	lastPlayedTime = 0;
 	
-	openalBuffer = 0;
+	openalBuffer = 0; // Init to OpenAL NULL buffer.
 }
 
 /*
@@ -626,7 +626,9 @@ void idSoundSample_OpenAL::FreeData()
 	playBegin = 0;
 	playLength = 0;
 	
-	if( alIsBuffer( openalBuffer ) )
+    // According to docs, alIsBuffer() returns true for the NULL buffer,
+    // guard against that explicitly
+	if( alIsBuffer( openalBuffer ) && openalBuffer != 0 )
 	{
 		CheckALErrors();
 		
