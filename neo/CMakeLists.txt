@@ -748,16 +748,16 @@ file(GLOB EDITOR_SCRIPT_SOURCES tools/script/*.cpp)
 file(GLOB EDITOR_SOUND_INCLUDES tools/sound/*.h)
 file(GLOB EDITOR_SOUND_SOURCES tools/sound/*.cpp)
 
-file(GLOB DOOMCLASSIC_INCLUDES ../doomclassic/doom/*.h)
-file(GLOB DOOMCLASSIC_SOURCES ../doomclassic/doom/*.cpp)
+#file(GLOB DOOMCLASSIC_INCLUDES ../doomclassic/doom/*.h)
+#file(GLOB DOOMCLASSIC_SOURCES ../doomclassic/doom/*.cpp)
 
-set(DOOMCLASSIC_STUBAUDIO_SOURCES ../doomclassic/doom/i_sound_stub.cpp)
-set(DOOMCLASSIC_OPENAL_SOURCES ../doomclassic/doom/i_sound_openal.cpp)
-set(DOOMCLASSIC_XAUDIO2_SOURCES ../doomclassic/doom/i_sound_win32.cpp)
+#set(DOOMCLASSIC_STUBAUDIO_SOURCES ../doomclassic/doom/i_sound_stub.cpp)
+#set(DOOMCLASSIC_OPENAL_SOURCES ../doomclassic/doom/i_sound_openal.cpp)
+#set(DOOMCLASSIC_XAUDIO2_SOURCES ../doomclassic/doom/i_sound_win32.cpp)
 
-list(REMOVE_ITEM DOOMCLASSIC_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/../doomclassic/doom/i_sound_stub.cpp)
-list(REMOVE_ITEM DOOMCLASSIC_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/../doomclassic/doom/i_sound_openal.cpp)
-list(REMOVE_ITEM DOOMCLASSIC_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/../doomclassic/doom/i_sound_win32.cpp)
+#list(REMOVE_ITEM DOOMCLASSIC_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/../doomclassic/doom/i_sound_stub.cpp)
+#list(REMOVE_ITEM DOOMCLASSIC_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/../doomclassic/doom/i_sound_openal.cpp)
+#list(REMOVE_ITEM DOOMCLASSIC_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/../doomclassic/doom/i_sound_win32.cpp)
 
 file(GLOB TIMIDITY_INCLUDES libs/timidity/*.h)
 file(GLOB TIMIDITY_SOURCES libs/timidity/*.cpp)
@@ -946,12 +946,12 @@ source_group("swf" FILES ${SWF_SOURCES})
 source_group("sys" FILES ${SYS_INCLUDES})
 source_group("sys" FILES ${SYS_SOURCES})
 
-source_group("doomclassic" FILES ${DOOMCLASSIC_INCLUDES})
-source_group("doomclassic" FILES ${DOOMCLASSIC_SOURCES})
+#source_group("doomclassic" FILES ${DOOMCLASSIC_INCLUDES})
+#source_group("doomclassic" FILES ${DOOMCLASSIC_SOURCES})
 
-source_group("doomclassic" FILES ${DOOMCLASSIC_STUBAUDIO_SOURCES})
-source_group("doomclassic" FILES ${DOOMCLASSIC_OPENAL_SOURCES})
-source_group("doomclassic" FILES ${DOOMCLASSIC_XAUDIO2_SOURCES})
+#source_group("doomclassic" FILES ${DOOMCLASSIC_STUBAUDIO_SOURCES})
+#source_group("doomclassic" FILES ${DOOMCLASSIC_OPENAL_SOURCES})
+#source_group("doomclassic" FILES ${DOOMCLASSIC_XAUDIO2_SOURCES})
 
 source_group("libs\\timidity" FILES ${TIMIDITY_INCLUDES})
 source_group("libs\\timidity" FILES ${TIMIDITY_SOURCES})
@@ -1078,7 +1078,7 @@ set(RBDOOM3_INCLUDES
 			${UI_INCLUDES}
 			${SWF_INCLUDES}
 			${COMMON_INCLUDES}
-			${DOOMCLASSIC_INCLUDES}
+            #${DOOMCLASSIC_INCLUDES}
 			${TIMIDITY_INCLUDES}
 			
 			${COMPILER_INCLUDES}
@@ -1113,7 +1113,7 @@ set(RBDOOM3_SOURCES
 			${UI_SOURCES}
 			${SWF_SOURCES}
 			${COMMON_SOURCES}
-			${DOOMCLASSIC_SOURCES}
+            #${DOOMCLASSIC_SOURCES}
 			${TIMIDITY_SOURCES}
 			
 			${COMPILER_AAS_SOURCES}
@@ -1122,7 +1122,7 @@ set(RBDOOM3_SOURCES
 			#${COMPILER_ROQVQ_SOURCES}
 			)
 
-add_definitions(-DUSE_DOOMCLASSIC)
+          #add_definitions(-DUSE_DOOMCLASSIC)
 
 add_definitions(-D__DOOM__
 				#-DBUILD_FREETYPE
