@@ -281,6 +281,12 @@ idCVar r_useHierarchicalDepthBuffer( "r_useHierarchicalDepthBuffer", "1", CVAR_R
 idCVar r_exposure( "r_exposure", "0.5", CVAR_ARCHIVE | CVAR_RENDERER | CVAR_FLOAT, "HDR exposure or LDR brightness [0.0 .. 1.0]", 0.0f, 1.0f );
 // RB end
 
+
+#if __APPLE__
+idCVar r_useMetal("r_useMetal", "1", CVAR_BOOL, "use Metal for render paths");
+#endif
+
+
 const char* fileExten[3] = { "tga", "png", "jpg" };
 const char* envDirection[6] = { "_px", "_nx", "_py", "_ny", "_pz", "_nz" };
 const char* skyDirection[6] = { "_forward", "_back", "_left", "_right", "_up", "_down" };
@@ -949,6 +955,7 @@ void R_InitOpenGL()
 #endif
 	// RB end
 }
+
 
 /*
 ==================
@@ -3012,8 +3019,13 @@ void idRenderSystemLocal::InitOpenGL()
 	// if OpenGL isn't started, start it now
 	if( !R_IsInitialized() )
 	{
-		R_InitOpenGL();
-		
+        if (r_useMetal.GetBool()) {
+            extern void R_InitMetal();
+            R_InitMetal();
+        } else {
+            R_InitOpenGL();
+        }
+        
 		// Reloading images here causes the rendertargets to get deleted. Figure out how to handle this properly on 360
 		globalImages->ReloadImages( true );
 		
