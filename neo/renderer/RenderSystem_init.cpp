@@ -3019,12 +3019,7 @@ void idRenderSystemLocal::InitOpenGL()
 	// if OpenGL isn't started, start it now
 	if( !R_IsInitialized() )
 	{
-        if (r_useMetal.GetBool()) {
-            extern void R_InitMetal();
-            R_InitMetal();
-        } else {
-            R_InitOpenGL();
-        }
+        R_InitOpenGL();
         
 		// Reloading images here causes the rendertargets to get deleted. Figure out how to handle this properly on 360
 		globalImages->ReloadImages( true );
