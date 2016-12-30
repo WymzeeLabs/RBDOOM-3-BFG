@@ -29,9 +29,15 @@
 // MTD
 
 #import <Metal/Metal.h>
+#include <SDL.h>
 
-// Make ready to use Metal
+/*
+ ============================
+ This is anagalous to R_InitOpenGL. We'll create a window and set it up for Metal rendering
+ 
+ ============================
+ */
 void R_InitMetal() {
-    id<MTLDevice> dev = MTLCreateSystemDefaultDevice();
+    SDL_Init(SDL_INIT_VIDEO);
     
 }

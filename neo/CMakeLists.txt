@@ -859,13 +859,7 @@ file(GLOB COMMON_INCLUDES sys/common/*.h)
 file(GLOB COMMON_SOURCES sys/common/*.cpp)
 
 file(GLOB SDL_INCLUDES sys/sdl/*.h)
-file(GLOB SDL_SOURCES sys/sdl/*.cpp)
-
-if (APPLE)
-  file(GLOB APPLE_SOURCES sys/apple/*.mm)
-  file(GLOB APPLE_INCLUDES sysm/apple/*.h)
-endif()
-
+file(GLOB SDL_SOURCES sys/sdl/*.[mcp]*)
 
 source_group("aas" FILES ${AAS_INCLUDES})
 source_group("aas" FILES ${AAS_SOURCES})
@@ -998,9 +992,6 @@ source_group("sys\\common" FILES ${COMMON_SOURCES})
 
 source_group("sys\\sdl" FILES ${SDL_INCLUDES})
 source_group("sys\\sdl" FILES ${SDL_SOURCES})
-
-source_group("sys\\apple" FILES ${APPLE_INCLUDES})
-source_group("sys\\apple" FILES ${APPLE_SOURCES})
 
 source_group("tools\\compilers" FILES ${COMPILER_INCLUDES})
 
@@ -1408,8 +1399,7 @@ else()
 
 		list(APPEND RBDOOM3_SOURCES
 			${POSIX_INCLUDES} ${POSIX_SOURCES}
-			${SDL_INCLUDES} ${SDL_SOURCES}
-            ${APPLE_INCLUDES} ${APPLE_SOURCES})
+			${SDL_INCLUDES} ${SDL_SOURCES})
 			
 		if(OPENAL)
 			find_package(OpenAL REQUIRED)
@@ -1447,7 +1437,7 @@ else()
 	
 	if(USE_PRECOMPILED_HEADERS) 	
 		set(RBDOOM3_PRECOMPILED_SOURCES ${RBDOOM3_SOURCES})
-        list(REMOVE_ITEM RBDOOM3_PRECOMPILED_SOURCES ${TIMIDITY_SOURCES} ${JPEG_SOURCES} ${PNG_SOURCES} ${ZLIB_SOURCES} ${GLEW_SOURCES} ${APPLE_SOURCES})
+        list(REMOVE_ITEM RBDOOM3_PRECOMPILED_SOURCES ${TIMIDITY_SOURCES} ${JPEG_SOURCES} ${PNG_SOURCES} ${ZLIB_SOURCES} ${GLEW_SOURCES})
 		list(REMOVE_ITEM RBDOOM3_PRECOMPILED_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/libs/zlib/minizip/ioapi.c)
 		list(REMOVE_ITEM RBDOOM3_PRECOMPILED_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/renderer/DXT/DXTDecoder.cpp)
 		list(REMOVE_ITEM RBDOOM3_PRECOMPILED_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/renderer/DXT/DXTEncoder.cpp)
@@ -1457,6 +1447,7 @@ else()
 		list(REMOVE_ITEM RBDOOM3_PRECOMPILED_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/renderer/jobs/staticshadowvolume/StaticShadowVolume.cpp)
 		list(REMOVE_ITEM RBDOOM3_PRECOMPILED_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/renderer/jobs/ShadowShared.cpp)
 		list(REMOVE_ITEM RBDOOM3_PRECOMPILED_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/renderer/RenderLog.cpp)
+		list(REMOVE_ITEM RBDOOM3_PRECOMPILED_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/sys/sdl/sdl_metal.mm)
 
 		foreach( src_file ${RBDOOM3_PRECOMPILED_SOURCES} )
 			#message(STATUS "-include precompiled.h for ${src_file}")
