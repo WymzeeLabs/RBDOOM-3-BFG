@@ -116,7 +116,7 @@ idFont::idFont( const char* n ) : name( n )
 	{
 		if( name.Icmp( DEFAULT_FONT ) == 0 )
 		{
-			idLib::FatalError( "Could not load default font \"%s\"", DEFAULT_FONT );
+			idLib::Warning( "Could not load default font \"%s\"", DEFAULT_FONT );
 		}
 		else
 		{
