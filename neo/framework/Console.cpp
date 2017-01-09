@@ -132,8 +132,9 @@ private:
 	
 	idEditField			historyEditLines[COMMAND_HISTORY];
 	
-	int					nextHistoryLine;// the last line in the history buffer, not masked
-	int					historyLine;	// the line being displayed from history buffer
+    // MTD: Unused
+	//int					nextHistoryLine;// the last line in the history buffer, not masked
+	//int					historyLine;	// the line being displayed from history buffer
 	// will be <= nextHistoryLine
 	
 	idEditField			consoleField;
